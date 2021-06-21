@@ -1,23 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { Ingredeint } from '../shared/ingredient.model';
+import { ShoppingListService } from './shopping-list.service';
 
 @Component({
   selector: 'app-shopping-list',
   templateUrl: './shopping-list.component.html',
-  styleUrls: ['./shopping-list.component.css']
+  styleUrls: ['./shopping-list.component.css'],
+
 })
 export class ShoppingListComponent implements OnInit {
-  ingredients: Ingredeint[] = [
-    new Ingredeint('apples', 5),
-    new Ingredeint('tomatos', 2),
-    new Ingredeint('fruits', 3)
-
-  ];
-  constructor() { }
+  ingredients: Ingredeint[];
+  constructor(private slService: ShoppingListService) { }
 
   ngOnInit(): void {
+    this.ingredients = this.slService.getIngredients()
   }
-  onIngredientAdded(ingredient: Ingredeint) {
-    this.ingredients.push(ingredient);
-  }
+
 }
