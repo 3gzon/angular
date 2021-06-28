@@ -3,7 +3,8 @@ import { Subject } from "rxjs";
 import { Ingredeint } from "../shared/ingredient.model";
 
 export class ShoppingListService {
-    ingredientsChanged = new Subject<Ingredeint[]>()
+    ingredientsChanged = new Subject<Ingredeint[]>();
+    startedEditting = new Subject<number>();
     private ingredients: Ingredeint[] = [
         new Ingredeint('apples', 5),
         new Ingredeint('tomatos', 2),
